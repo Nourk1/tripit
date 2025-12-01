@@ -54,7 +54,11 @@ function renderCalendar() {
     let classes = 'calendar-day';
     if (isToday) classes += ' today';
 
-    // Show first 3 events
+    agenda.sort((a, b) => {
+      if (!a.time) return 1;
+      if (!b.time) return -1;
+      return a.time.localeCompare(b.time);
+    });// Show first 3 events
     const displayItems = agenda.slice(0, 3);
     const remaining = agenda.length - displayItems.length;
 
