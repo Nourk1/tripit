@@ -13,8 +13,13 @@ function clampToTrip(dateStr) { // Make sure a given date is clamped so it stays
 function renderAgenda(dateISO) { // Based on the specific date, render the agenda list.
   const trip = getCurrentTrip(); if (!trip) return;
   const container = document.getElementById("agenda-list");
-  const items = trip.agenda[dateISO] || [];
-
+  let items = trip.agenda[dateISO] || [];
+  // Sort by time
+  items = items.slice().sort((a, b) => {
+    if (!a.time) return 1;
+    if (!b.time) return -1;
+    return a.time.localeCompare(b.time);
+  });
   // Dynamically build the agenda list.
   container.innerHTML = ` 
     <h3>${new Date(dateISO + "T00:00:00").toLocaleDateString()}</h3>
