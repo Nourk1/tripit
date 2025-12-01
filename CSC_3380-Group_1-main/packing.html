@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TripIt • Packing List</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/common.js"></script>
+  <script defer src="js/packing.js"></script>
+  <script defer src="js/notifications.js"></script>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <header class="topbar">
+    <h1>TripIt</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="calendar_view.html">Calendar View</a>
+      <a href="weather.html">Weather</a>
+      <a href="packing.html">Packing List</a>
+      <button id="notif-bell" class="notif-bell">
+        🔔
+        <span id="notif-badge" class="notif-badge hidden">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Notification Panel -->
+  <div id="notif-panel" class="notif-panel hidden">
+    <div class="notif-header">
+      <h3>Notifications</h3>
+      <button id="close-notif">✕</button>
+    </div>
+    <div id="notif-list" class="notif-list"></div>
+  </div>
+
+  <main class="container">
+    <section class="card">
+      <h2>Packing List</h2>
+      <div class="grid-3 gap-16">
+        <div>
+          <label for="new-item">Add item</label>
+          <input id="new-item" type="text" placeholder="e.g., Passport" />
+        </div>
+        <div class="align-end">
+          <button id="add-item" class="w-100">Add</button>
+        </div>
+        <div class="align-end">
+          <button id="generate" class="w-100">Generate suggestions</button>
+        </div>
+      </div>
+
+      <ul id="pack-list" class="list checklist"></ul>
+
+      <div class="grid-2 gap-16 mt-16">
+        <button id="clear-checked" class="danger w-100">Remove checked</button>
+        <button id="reset-list" class="secondary w-100">Reset to blank</button>
+      </div>
+
+      <p class="muted mt-12" id="pack-hint"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Edit freely — everything saves to your browser for the selected trip.</p>
+  </footer>
+</body>
+</html>
